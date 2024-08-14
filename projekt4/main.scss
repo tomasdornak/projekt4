@@ -1,0 +1,352 @@
+// === IMPORTS === //
+
+@import "partials/variables";
+@import "partials/mixin";
+
+
+// === MEDIA === //
+
+    /* default styles here for older browsers. 
+       I tend to go for a 600px - 960px width max but using percentages
+    */
+    @media only screen and (min-width: 960px) {
+        /* styles for browsers larger than 960px; */
+    }
+    @media only screen and (min-width: 1440px) {
+        /* styles for browsers larger than 1440px; */
+    }
+    @media only screen and (min-width: 2000px) {
+        /* for sumo sized (mac) screens */
+    }
+    @media only screen and (max-device-width: 480px) {
+       /* styles for mobile browsers smaller than 480px; (iPhone) */
+    }
+    @media only screen and (device-width: 768px) {
+       /* default iPad screens */
+    }
+    /* different techniques for iPad screening */
+    @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+      /* For portrait layouts only */
+    }
+
+    @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
+      /* For landscape layouts only */
+    }
+
+
+// === BODY === //
+
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    max-width: 100%;
+    background-color: $background-color;
+}
+
+body {
+    background-color: $background-color;
+}
+
+
+// === HEADER === //
+
+header {
+    @include navbar;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.navbar {
+    list-style-type: none !important;
+    padding: 0!important;
+    margin: 0!important;
+    display: flex!important;
+    justify-content: center!important;
+    align-items: center!important;
+    height: $navbar-height;
+    background-color: $navbar-color;
+
+    li {
+        margin: 0 50px!important; 
+        display: inline!important;
+
+        a {
+          @include textStyle4;
+
+            &:hover {
+                color: lighten($tertiary-color, 70%)!important;
+            }
+        }
+}
+}
+
+
+// === SECTION 1 === //
+
+#section1 {
+    @include sectionProperties;
+    background-color: $background-color;
+    margin-top: $navbar-height; 
+    flex-direction: column;
+    align-items: flex-start; 
+    justify-content: center;
+    padding-bottom: 200px;
+    padding-left: 200px;
+    scroll-margin-top: $navbar-height;
+
+    h1 {
+        @include textStyle1;
+        text-align: left; 
+        margin: 0;
+        padding: 0;
+    }
+
+    p {
+        @include textStyle2;
+        max-width: 50%;
+        text-align: left;
+    }
+}
+
+#section2, #section3, #section4 {
+    @include sectionProperties;
+    background-color: $background-color;
+}
+  
+  .main-button {
+    @include buttonBase;
+    @include buttonHover;
+    @include buttonFocus;
+    @include buttonActive;
+  
+    &.disabled {
+      color: #787878;
+      cursor: auto;
+    }
+  }
+
+
+  // === SECTION 2 === //
+
+  #section2 {
+    @include sectionProperties;
+    background-color: $background-color;
+    scroll-margin-top: $navbar-height;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    padding: 0 60px;
+  
+    .section2-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 20px;
+  
+        h1 {
+          @include textStyle1;
+          text-align: center;
+          padding: 0;
+          margin: 0;
+        }
+  
+        p {
+          @include textStyle2;
+          margin-top: 20px;
+          margin-bottom: 10px;
+          border: none;
+          width: 100%;
+          overflow: visible;
+          object-fit: cover;
+          display: inline-block;
+        }
+      }
+    }
+
+
+  // === SECTIONS 1,2,3 === //
+  
+        .section2-content1,
+        .section2-content2,
+        .section2-content3 {
+          border: 5px solid $primary-color;
+          padding: 20px;
+          box-sizing: border-box;
+          border-radius: 10px;
+          flex-direction: row;
+          flex: 1 1;
+        }
+
+
+  // === SECTION 3 === //
+
+  #section3 {
+    flex-direction: column;
+    scroll-margin-top: $navbar-height;
+
+    h1 {
+        @include textStyle1;
+        text-align: center;
+        margin-bottom: 25px;
+    }
+  } 
+  
+  .carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.carousel-inner {
+    width: 100%;
+    height: 500px;
+}
+
+.carousel-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+// === SECTION 4 === //
+
+#section4 {
+  flex-direction: column;
+  scroll-margin-top: $navbar-height;
+  justify-content: center;
+  padding-bottom: 100px;
+
+    h1 {
+        @include textStyle1;
+        padding-left: 200px;
+        padding-top: 250px;
+    } 
+
+    p {
+      @include textStyle2;
+      padding-left: 200px;
+      max-width: 50%;
+    }
+}
+
+.vertical-line {
+  position: absolute;
+  right: 680px; 
+  width: 4px; 
+  height: 50%;
+  background: linear-gradient(to bottom, #2d61dc, #187bd1); 
+  animation: glow 1.5s ease-in-out infinite alternate; 
+}
+
+.section4-img {
+  width: 600px;
+  height: auto;
+  margin-left: auto;
+  padding-right: 100px;
+  position: relative;
+  top: -18%; 
+  transform: translateY(-50%); 
+}
+
+// === FOOTER SECTION === //
+
+footer {
+  display: flex;
+  background-color: $footer-color;
+  flex-direction: column;
+  height: 430px;
+  padding: 20px;
+
+  .footer-content1 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 100px;
+
+    h1 {
+      @include textStyle3;
+      padding-top: 30px;
+      padding-left: 0;
+    }
+
+    a {
+      @include textStyle4;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 10px;
+
+      &:hover {
+        color: lighten($tertiary-color, 70%)!important;
+      }
+    }
+
+    .contact-info {
+      margin-top: 20px;
+
+      p {
+        margin: 5px 0;
+        @include textStyle4;
+      }
+
+      .phone,
+      .email {
+        @include textStyle4;
+        display: block;
+      }
+    }
+
+    .social-icons {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+
+      a {
+        text-decoration: none;
+        color: $primary-color;
+
+        &:hover {
+          color: lighten($primary-color, 20%)!important;
+        }
+
+        i {
+          font-size: 24px; 
+        }
+      }
+    }
+  }
+
+  .footer-bottom {
+    margin-top: auto;
+    text-align: center;
+    padding-top: 10px;
+    border-top: 2px solid lighten(white, 20%);
+    @include textStyle4;
+
+    a {
+      color: $tertiary-color;
+      text-decoration: none;
+
+      &:hover {
+        color: lighten($tertiary-color, 20%)!important;
+      }
+    }
+  }
+}
